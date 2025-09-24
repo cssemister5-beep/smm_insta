@@ -111,23 +111,128 @@ def home():
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+# <style>
+# body { background:#121212; color:#e0e0e0; font-family:'Segoe UI',sans-serif; }
+# a { color:#3b82f6; text-decoration:none; } a:hover { text-decoration:underline; }
+# .card { border-radius:12px; background:#1e1e1e; box-shadow:0 4px 12px rgba(0,0,0,0.5); }
+# .profile-pic { border-radius:50%; width:120px; height:120px; object-fit:cover; border:3px solid #333; }
+# .stats-card { text-align:center; padding:15px; border-radius:12px; background:#2a2a2a; transition:0.3s; }
+# .stats-card:hover { background:#3a3a3a; transform:translateY(-3px);}
+# .stats-card h6 { margin:0; font-weight:600; font-size:1rem; color:#fff; }
+# .stats-card small { color:#aaa; font-size:0.75rem; }
+# .post-card { position:relative; overflow:hidden; border-radius:12px; cursor:pointer; }
+# .post-card img { width:100%; height:180px; object-fit:cover; transition:0.3s; }
+# .post-card:hover img { transform:scale(1.05); }
+# .post-overlay { position:absolute; bottom:0; width:100%; padding:6px; background:rgba(0,0,0,0.6); font-size:0.7rem; display:flex; justify-content:space-between; color:#fff; }
+# .form-control { background:#2a2a2a; color:#e0e0e0; border:none; }
+# .form-control::placeholder { color:#888; }
+# .btn-primary { background:#3b82f6; border:none; }
+# .alert { background:#2a2a2a; color:#e0e0e0; border:none; }
+# </style>
 <style>
-body { background:#121212; color:#e0e0e0; font-family:'Segoe UI',sans-serif; }
-a { color:#3b82f6; text-decoration:none; } a:hover { text-decoration:underline; }
-.card { border-radius:12px; background:#1e1e1e; box-shadow:0 4px 12px rgba(0,0,0,0.5); }
-.profile-pic { border-radius:50%; width:120px; height:120px; object-fit:cover; border:3px solid #333; }
-.stats-card { text-align:center; padding:15px; border-radius:12px; background:#2a2a2a; transition:0.3s; }
-.stats-card:hover { background:#3a3a3a; transform:translateY(-3px);}
-.stats-card h6 { margin:0; font-weight:600; font-size:1rem; color:#fff; }
-.stats-card small { color:#aaa; font-size:0.75rem; }
-.post-card { position:relative; overflow:hidden; border-radius:12px; cursor:pointer; }
-.post-card img { width:100%; height:180px; object-fit:cover; transition:0.3s; }
-.post-card:hover img { transform:scale(1.05); }
-.post-overlay { position:absolute; bottom:0; width:100%; padding:6px; background:rgba(0,0,0,0.6); font-size:0.7rem; display:flex; justify-content:space-between; color:#fff; }
-.form-control { background:#2a2a2a; color:#e0e0e0; border:none; }
-.form-control::placeholder { color:#888; }
-.btn-primary { background:#3b82f6; border:none; }
-.alert { background:#2a2a2a; color:#e0e0e0; border:none; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+  background: #121212;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h2, h4, h6 {
+  color: #ffffff;
+}
+
+.card {
+  border-radius: 12px;
+  background: #1e1e1e;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #444;
+}
+
+.stats-card {
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  background: #2a2a2a;
+  transition: 0.3s;
+}
+.stats-card:hover {
+  background: #3a3a3a;
+  transform: translateY(-3px);
+}
+.stats-card h6 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.stats-card small {
+  color: #bbb;
+  font-size: 0.8rem;
+}
+
+.post-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.post-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s;
+}
+.post-card:hover img {
+  transform: scale(1.05);
+}
+.post-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+.form-control {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border: none;
+}
+.form-control::placeholder {
+  color: #888;
+}
+.btn-primary {
+  background: #3b82f6;
+  border: none;
+  font-weight: 500;
+}
+.alert {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  border: none;
+}
 </style>
 </head>
 <body>
