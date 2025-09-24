@@ -25,13 +25,6 @@ def home():
                 "x-ig-app-id": "936619743392459",
             }
 
-            # media_url = f"https://graph.instagram.com/{INSTAGRAM_USER_ID}/media"
-            #     media_params = {
-            #         "fields": "id,caption,media_url,permalink,timestamp",
-            #         "access_token": ACCESS_TOKEN
-            #     }
-            # mresp = requests.get(media_url, params=media_params, timeout=10)
-
             try:
                 response = requests.get(url, headers=headers, timeout=10)
                 if response.status_code == 200:
@@ -89,9 +82,9 @@ def home():
 
                         num_posts = len(posts) if posts else 1
                         summary = {
-                            "avg_likes": int(total_likes/num_posts),
-                            "avg_comments": int(total_comments/num_posts),
-                            "engagement_rate": round(((total_likes + total_comments)/max(profile_data['followers'],1))*100,2)
+                            "avg_likes": int(total_likes / num_posts),
+                            "avg_comments": int(total_comments / num_posts),
+                            "engagement_rate": round(((total_likes + total_comments) / max(profile_data['followers'], 1)) * 100, 2)
                         }
 
                     else:
@@ -111,24 +104,6 @@ def home():
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-# <style>
-# body { background:#121212; color:#e0e0e0; font-family:'Segoe UI',sans-serif; }
-# a { color:#3b82f6; text-decoration:none; } a:hover { text-decoration:underline; }
-# .card { border-radius:12px; background:#1e1e1e; box-shadow:0 4px 12px rgba(0,0,0,0.5); }
-# .profile-pic { border-radius:50%; width:120px; height:120px; object-fit:cover; border:3px solid #333; }
-# .stats-card { text-align:center; padding:15px; border-radius:12px; background:#2a2a2a; transition:0.3s; }
-# .stats-card:hover { background:#3a3a3a; transform:translateY(-3px);}
-# .stats-card h6 { margin:0; font-weight:600; font-size:1rem; color:#fff; }
-# .stats-card small { color:#aaa; font-size:0.75rem; }
-# .post-card { position:relative; overflow:hidden; border-radius:12px; cursor:pointer; }
-# .post-card img { width:100%; height:180px; object-fit:cover; transition:0.3s; }
-# .post-card:hover img { transform:scale(1.05); }
-# .post-overlay { position:absolute; bottom:0; width:100%; padding:6px; background:rgba(0,0,0,0.6); font-size:0.7rem; display:flex; justify-content:space-between; color:#fff; }
-# .form-control { background:#2a2a2a; color:#e0e0e0; border:none; }
-# .form-control::placeholder { color:#888; }
-# .btn-primary { background:#3b82f6; border:none; }
-# .alert { background:#2a2a2a; color:#e0e0e0; border:none; }
-# </style>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -138,7 +113,6 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
 }
-
 a {
   color: #3b82f6;
   text-decoration: none;
@@ -146,17 +120,14 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
 h2, h4, h6 {
   color: #ffffff;
 }
-
 .card {
   border-radius: 12px;
   background: #1e1e1e;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
 }
-
 .profile-pic {
   border-radius: 50%;
   width: 120px;
@@ -164,7 +135,6 @@ h2, h4, h6 {
   object-fit: cover;
   border: 3px solid #444;
 }
-
 .stats-card {
   text-align: center;
   padding: 15px;
@@ -186,7 +156,6 @@ h2, h4, h6 {
   color: #bbb;
   font-size: 0.8rem;
 }
-
 .post-card {
   position: relative;
   overflow: hidden;
@@ -214,7 +183,6 @@ h2, h4, h6 {
   color: #fff;
   backdrop-filter: blur(4px);
 }
-
 .form-control {
   background: #2a2a2a;
   color: #e0e0e0;
@@ -237,7 +205,7 @@ h2, h4, h6 {
 </head>
 <body>
 <div class="container py-4">
-<h2 class="text-center mb-4">📊 Instagram Analytics Dashboard</h2>
+<h2 class="text-center mb-4 fw-bold">Instagram Analytics Dashboard</h2>
 <form method="POST" class="d-flex justify-content-center mb-4">
 <input type="text" name="username" class="form-control w-50" placeholder="Enter Instagram username" required>
 <button class="btn btn-primary ms-2"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
@@ -275,19 +243,19 @@ h2, h4, h6 {
 <div class="row g-3 mb-4">
 <div class="col-md-6">
 <div class="card p-3">
-<h6 class="mb-2">📈 Likes & Comments Trend</h6>
+<h6 class="mb-2 text-light">Likes & Comments Trend</h6>
 <canvas id="trendChart"></canvas>
 </div>
 </div>
 <div class="col-md-6">
 <div class="card p-3">
-<h6 class="mb-2">📊 Engagement Rate per Post (%)</h6>
+<h6 class="mb-2 text-light">Engagement Rate per Post (%)</h6>
 <canvas id="engagementChart"></canvas>
 </div>
 </div>
 </div>
 
-<h6 class="mb-3 text-center">📸 Recent Posts</h6>
+<h6 class="mb-3 text-center text-light">Recent Posts</h6>
 <div class="row g-3">
 {% for post in posts %}
 <div class="col-6 col-md-3">
@@ -353,26 +321,19 @@ x:{ticks:{color:'#e0e0e0'}}
 </body>
 </html>
 """
-
     return render_template_string(html, profile=profile_data, posts=posts, summary=summary, error=error)
-
-
-
-
-
 
 @app.route("/proxy/<path:url>")
 def proxy(url):
     try:
-        
         real_url = unquote(url)
         headers = {
             "accept": "*/*",
-    "accept-language": "en-US,en;q=0.9",
-            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-            "Referer":"https://www.instagram.com/",
+            "accept-language": "en-US,en;q=0.9",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "Referer": "https://www.instagram.com/",
             "cookie": "sessionid=PASTE_YOUR_SESSION_ID_HERE"
-            }
+        }
         resp = requests.get(real_url, headers=headers, stream=True, timeout=10)
         resp.raise_for_status()
         excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
@@ -380,11 +341,6 @@ def proxy(url):
         return Response(resp.content, resp.status_code, headers)
     except Exception as e:
         return f"Proxy error: {e}", 500
-    
-
-import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
-
+    app.run(debug=True)
