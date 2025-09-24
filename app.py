@@ -220,7 +220,7 @@ h2, h4, h6 {
 <img src="/proxy/{{ profile['profile_pic_url'] | url_encode }}" class="profile-pic me-md-4 mb-3 mb-md-0">
 <div>
 <h4>{{ profile['full_name'] }} {% if profile['is_verified'] %}<i class="fa-solid fa-circle-check text-primary"></i>{% endif %}</h4>
-<h6 class="text-muted">@{{ profile['username'] }}</h6>
+<h6 class="">@{{ profile['username'] }}</h6>
 <p style="font-size:0.85rem; color:#ccc;">{{ profile['biography'] }}</p>
 <p style="font-size:0.8rem;">
 <i class="fa-solid fa-lock"></i> {% if profile['is_private'] %} Private {% else %} Public {% endif %} |
